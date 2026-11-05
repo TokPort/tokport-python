@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tokport"
+dynamic = ["version"]
+description = "Python SDK for the TokPort image & video generation API (GPT Image, Nano Banana, Seedream, Seedance, Kling, Qwen Image) — https://tokport.io"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "TokPort", email = "support@tokport.io" }]
+requires-python = ">=3.9"
+dependencies = [
+  "httpx>=0.25,<1",
+  "typing-extensions>=4.7; python_version < '3.11'",
+]
+keywords = [
+  "tokport",
+  "image generation",
+  "video generation",
+  "text-to-image",
+  "text-to-video",
+  "image-to-video",
+  "openai compatible",
+  "gpt-image",
+  "nano banana",
+  "seedream",
+  "seedance",
+  "kling",
+  "qwen image",
+  "ai api",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Multimedia :: Graphics",
+  "Topic :: Multimedia :: Video",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://tokport.io/?utm_source=pypi&utm_medium=package&utm_campaign=tokport-python"
+Documentation = "https://tokport.io/docs/clients?utm_source=pypi&utm_medium=package&utm_campaign=tokport-python"
+Models = "https://tokport.io/models?utm_source=pypi&utm_medium=package&utm_campaign=tokport-python"
+Pricing = "https://tokport.io/pricing?utm_source=pypi&utm_medium=package&utm_campaign=tokport-python"
+"Get an API key" = "https://tokport.io/register?utm_source=pypi&utm_medium=package&utm_campaign=tokport-python"
+Source = "https://github.com/TokPort/tokport-python"
+Changelog = "https://github.com/TokPort/tokport-python/releases"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "mypy>=1.10", "ruff>=0.5"]
+
+[tool.hatch.version]
+path = "src/tokport/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tokport"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+strict = true
+python_version = "3.9"
